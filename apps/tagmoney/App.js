@@ -5,7 +5,7 @@ import { MyView } from 'core-components';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app! 2</Text>
+      <Text>Open up App.js to start working on your app! 3</Text>
       <StatusBar style="auto" />
       <MyView />
     </View>
