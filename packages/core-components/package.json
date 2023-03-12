@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
-  "sideEffects": false
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-safe-area-context": "*"
+  }
 }
