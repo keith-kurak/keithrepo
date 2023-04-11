@@ -1,0 +1,12 @@
+{
+  "name": "baseball",
+  "version": "1.0.0",
+  "description": "",
+  "sideEffects": false,
+  "scripts": {
+    "batter": "node batter.js"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10"
+  }
+}

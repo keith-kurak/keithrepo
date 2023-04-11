@@ -1,3 +1,7 @@
 node_modules
 .expo/README.md
 .expo/devices.json
+packages/baseball/data
+packages/baseball/output
+apps/.DS_Store
+packages/baseball/.DS_Store
