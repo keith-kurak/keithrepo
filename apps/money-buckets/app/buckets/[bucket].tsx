@@ -1,13 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
+import { useSearchParams } from 'expo-router';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
-export default function TeamScreen() {
+export default function BucketScreen() {
+
+  const { bucket } = useSearchParams();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Team</Text>
+      <Text style={styles.title}>Bucket {bucket}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/buckets/[bucket.tsx]" />
 
