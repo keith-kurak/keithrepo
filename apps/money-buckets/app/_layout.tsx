@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import { useInitialRootStore } from '../stores';
 
 export const unstable_settings = {
   // Ensure any route can link back to `/`
@@ -21,10 +22,12 @@ export default function RootLayout() {
     if (error) throw error;
   }, [error]);
 
+  const { rehydrated } = useInitialRootStore(() => {});
+
   return (
     <>
-      {!loaded && <SplashScreen />}
-      {loaded && <RootLayoutNav />}
+      {!loaded && !rehydrated && <SplashScreen />}
+      {loaded && rehydrated && <RootLayoutNav />}
     </>
   );
 }

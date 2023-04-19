@@ -1,38 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-import { useSearchParams } from 'expo-router';
+import { StatusBar } from "expo-status-bar";
+import { Platform, StyleSheet, ScrollView, Pressable } from "react-native";
+import { useSearchParams, Stack } from "expo-router";
+import { observer } from "mobx-react-lite";
 
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import { Text, View } from "../../components/Themed";
 
-export default function BucketScreen() {
+import { useStores } from "../../stores";
 
-  const { bucket } = useSearchParams();
+function Entry({ entry }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Bucket {bucket}</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/buckets/[bucket.tsx]" />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+    <View style={{ flexDirection: "row" }}>
+      <Text>{entry.value}</Text>
+      <Text>{entry.description}</Text>
     </View>
   );
 }
 
+export default observer(function BucketScreen() {
+  const { bucket } = useSearchParams();
+  const { bucketsStore } = useStores();
+
+  const myBucket = bucketsStore.buckets.find((b) => b.name === bucket);
+
+  return (
+    <View style={styles.container}>
+      <Stack.Screen options={{ title: `${bucket}` }} />
+      <ScrollView>
+        {myBucket.entries.map((entry, index) => (
+          <Entry key={index.toString()} entry={entry} />
+        ))}
+      </ScrollView>
+      <Pressable onPress={() => myBucket.addEntry({ value: 17, description: "blah" })}>
+        <Text>Add entry</Text>
+      </Pressable>
+      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+    </View>
+  );
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginVertical: 50,
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
 });
