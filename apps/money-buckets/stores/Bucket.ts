@@ -18,7 +18,7 @@ export const BucketModel = types
       bucket.entries.push({ value, description, date: "" });
     },
   }))
-  .views((episode) => ({}));
+  .views((bucket) => ({}));
 
 export interface Bucket extends Instance<typeof BucketModel> {}
 export interface BucketSnapshotOut extends SnapshotOut<typeof BucketModel> {}

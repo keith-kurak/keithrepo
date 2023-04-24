@@ -29,7 +29,7 @@ export default observer(function BucketsScreen() {
         ))}
       </ScrollView>
       <Pressable
-        onPress={() => bucketsStore.addBucket(`bucket #${bucketsStore.buckets.length + 1}`)}>
+        onPress={() => bucketsStore.addBucket(`bucket${bucketsStore.buckets.length + 1}`)}>
         <Text>Add bucket</Text>
       </Pressable>
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />

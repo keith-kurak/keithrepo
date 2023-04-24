@@ -20,7 +20,7 @@ export default observer(function BucketScreen() {
   const { bucket } = useSearchParams();
   const { bucketsStore } = useStores();
 
-  const myBucket = bucketsStore.buckets.find((b) => b.name === bucket);
+  const myBucket = bucketsStore.bucketForName(bucket);
 
   return (
     <View style={styles.container}>

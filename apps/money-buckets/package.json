@@ -20,6 +20,7 @@
     "expo-status-bar": "~1.4.2",
     "expo-web-browser": "~12.1.1",
     "i18n-js": "^4.2.3",
+    "lodash": "^4.17.21",
     "mobx": "^6.9.0",
     "mobx-react-lite": "^3.4.3",
     "mobx-state-tree": "^5.1.8",
